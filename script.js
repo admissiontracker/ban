@@ -1,9 +1,9 @@
 // --------------- Lecture data ---------------
 // Use the video ID only (the 11-char id after v=)
 const lectures = [
-  { num: 1, title: "বাক্য প্রকরণ পর্ব-০১", dur: "", id: "RRlUr2r6Z9s" },
-  { num: 2, title: "বাক্য প্রকরণ পর্ব-০২ + রেইনকোট", dur: "", id: "NTz6ALwExpU" },
-  { num: 3, title: "বিদ্রোহী", dur: "", id: "jCq1Fhd8Qpg" },
+  { num: 1, title: "বাক্য প্রকরণ পর্ব-০১", dur: "01:17", id: "RRlUr2r6Z9s" },
+  { num: 2, title: "বাক্য প্রকরণ পর্ব-০২ + রেইনকোট", dur: "01:22", id: "NTz6ALwExpU" },
+  { num: 3, title: "বিদ্রোহী", dur: "01:04", id: "jCq1Fhd8Qpg" },
   { num: 4, title: "সন্ধি", dur: "00:58", id: "O0P_q1dq1lI" },
   { num: 5, title: "সন্ধি & তাহারেই পড়ে মনে", dur: "01:08", id: "Aiiqm6hqY_w" },
   { num: 6, title: "অপরিচিতা, বাংলা ব্যাকরণ আলোচ্য বিষয়", dur: "01:10", id: "U5HQsNDEapc" },
@@ -259,3 +259,4 @@ addA11y();
 // Re-run a11y when filtering (simple approach)
 const observer = new MutationObserver(() => addA11y());
 observer.observe(listEl, { childList: true });
+
