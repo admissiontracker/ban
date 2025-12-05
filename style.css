@@ -1,0 +1,227 @@
+:root{
+  --bg:#f5f7fb;
+  --card:#ffffff;
+  --muted:#6b7280;
+  --text:#0f172a;
+  --accent:#2563eb; /* blue */
+  --accent-2:#ef4444; /* netflix red (for netflix theme) */
+  --glass: rgba(255,255,255,0.6);
+  --radius:12px;
+}
+
+/* Dark theme tokens (swapped when body has .dark) */
+body.dark {
+  --bg:#0b1220;
+  --card:#0f1724;
+  --muted:#94a3b8;
+  --text:#e6eef8;
+  --accent:#60a5fa;
+  --glass: rgba(255,255,255,0.04);
+}
+
+/* Netflix premium style tokens (applies when body has .netflix) */
+body.netflix {
+  --bg:#040406;
+  --card:#0b0b0b;
+  --muted:#a6a6a6;
+  --text:#fff;
+  --accent: #ff2c2c;
+  --glass: rgba(255,255,255,0.02);
+}
+
+/* Layout */
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background:linear-gradient(180deg,var(--bg), #0a0a0a 100%);
+  color:var(--text);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+/* App container */
+.app{
+  max-width:1200px;
+  margin:18px auto;
+  padding:14px;
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
+
+/* Header */
+.app-header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:10px 14px;
+  background:var(--glass);
+  border-radius:12px;
+  box-shadow: 0 6px 18px rgba(2,6,23,0.12);
+}
+
+.title-group h1{
+  margin:0;
+  font-size:20px;
+}
+.subtitle{
+  margin:0;
+  font-size:12px;
+  color:var(--muted);
+}
+
+/* Controls */
+.controls{display:flex;gap:10px;align-items:center}
+.control{
+  display:inline-flex;
+  gap:8px;
+  align-items:center;
+  font-size:13px;
+  color:var(--muted);
+}
+.control input{width:16px;height:16px;cursor:pointer}
+
+/* Main area */
+.main{
+  display:flex;
+  gap:18px;
+  align-items:flex-start;
+}
+
+/* Player area */
+.player-area{
+  flex:1 1 0;
+  min-width:280px;
+  border-radius:12px;
+  background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+  padding:12px;
+  box-shadow: 0 6px 20px rgba(2,6,23,0.12);
+}
+
+.player-wrapper{
+  position:relative;
+  width:100%;
+  aspect-ratio:16/9;
+  background:#000;
+  border-radius:10px;
+  overflow:hidden;
+}
+
+/* Placeholder before player */
+.video-placeholder{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  height:100%;
+  width:100%;
+  color:var(--muted);
+  background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+}
+.placeholder-text{font-size:14px}
+
+/* Video meta */
+.video-meta{
+  margin-top:10px;
+  padding:8px 6px;
+}
+.video-title{
+  font-weight:600;
+  font-size:16px;
+}
+.video-subinfo{
+  color:var(--muted);
+  font-size:13px;
+  margin-top:6px;
+}
+
+/* Sidebar / lecture list */
+.sidebar{
+  width:340px;
+  max-width:40%;
+  min-width:240px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+.search-wrap input{
+  width:100%;
+  padding:10px 12px;
+  border-radius:10px;
+  border:1px solid rgba(0,0,0,0.06);
+  outline:none;
+  font-size:14px;
+  background:var(--card);
+  color:var(--text);
+}
+.search-wrap input::placeholder{color:var(--muted)}
+
+.lecture-list{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  max-height:66vh;
+  overflow:auto;
+  padding-right:6px;
+}
+.lecture-item{
+  display:flex;
+  gap:10px;
+  align-items:center;
+  padding:12px;
+  border-radius:10px;
+  background:var(--card);
+  border:1px solid rgba(0,0,0,0.04);
+  cursor:pointer;
+  transition:transform .12s ease, box-shadow .12s ease;
+}
+.lecture-item:hover{transform:translateY(-3px)}
+.lecture-item .left{
+  min-width:50px;
+  width:50px;
+  height:50px;
+  border-radius:8px;
+  background:linear-gradient(180deg,var(--glass),transparent);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:700;
+  color:var(--muted);
+}
+.lecture-item .content{flex:1}
+.lecture-item .title{font-size:14px;font-weight:600}
+.lecture-item .meta{font-size:12px;color:var(--muted);margin-top:4px}
+.lecture-item.active{
+  outline:3px solid var(--accent);
+  box-shadow:0 10px 30px rgba(2,6,23,0.18);
+}
+
+/* Sticky behaviour on desktop */
+@media(min-width:900px){
+  .sidebar{position:sticky;top:18px;align-self:flex-start}
+}
+
+/* Responsive: mobile stacks column with player on top and list below */
+@media(max-width:899px){
+  .main{flex-direction:column}
+  .sidebar{width:100%;max-width:100%}
+  .lecture-list{max-height:50vh}
+}
+
+/* Netflix-specific visual tweaks */
+body.netflix .player-wrapper{
+  box-shadow: 0 30px 70px rgba(0,0,0,0.65), inset 0 -6px 30px rgba(255,0,0,0.03);
+  border-radius:8px;
+  background:linear-gradient(180deg,#000,#050505);
+}
+body.netflix .app-header{background:linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01))}
+body.netflix .lecture-item.active{
+  outline-color: var(--accent);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.6);
+}
+
+/* Small helpers */
+small{color:var(--muted)}

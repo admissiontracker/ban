@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Bangla Classes</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="app-header">
+      <div class="title-group">
+        <h1>Bangla Classes</h1>
+        <p class="subtitle">Click any lecture to load the video (lazy-loaded)</p>
+      </div>
+
+      <div class="controls">
+        <label class="control">
+          <input id="autoplayToggle" type="checkbox" />
+          <span>Auto-play next</span>
+        </label>
+
+        <label class="control">
+          <input id="themeToggle" type="checkbox" />
+          <span>Dark Mode</span>
+        </label>
+
+        <label class="control">
+          <input id="netflixStyleToggle" type="checkbox" />
+          <span>Netflix Style</span>
+        </label>
+      </div>
+    </header>
+
+    <main class="main">
+      <!-- Player area -->
+      <section class="player-area" aria-live="polite">
+        <div id="playerWrapper" class="player-wrapper">
+          <!-- YT player will be injected into #player -->
+          <div id="player" class="video-placeholder">
+            <div class="placeholder-text">Select a lecture to load the player</div>
+          </div>
+        </div>
+
+        <div class="video-meta">
+          <div id="videoTitle" class="video-title">No lecture loaded</div>
+          <div id="videoInfo" class="video-subinfo"></div>
+        </div>
+      </section>
+
+      <!-- Lectures / search -->
+      <aside class="sidebar">
+        <div class="search-wrap">
+          <input id="searchInput" placeholder="Search lecture number or topic..." />
+        </div>
+
+        <div id="lectureList" class="lecture-list"></div>
+      </aside>
+    </main>
+
+    <footer class="app-footer">
+      <small>Built with lazy-loading YouTube iframe API • Theme saved in your browser</small>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+  <!-- YouTube IFrame API (loaded only once; the player is created lazily) -->
+  <script>
+    // The script loads the IFrame API only when needed in script.js (on first click)
+  </script>
+</body>
+</html>
